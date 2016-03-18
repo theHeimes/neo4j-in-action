@@ -35,9 +35,9 @@ public class Main {
 
         runTraversalQuery(context);
 
-//        generatedJdbcData(context);
+        generatedJdbcData(context);
 //
-//        runJdbcQuery(context);
+        runJdbcQuery(context);
 
     }
 

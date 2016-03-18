@@ -30,7 +30,8 @@ public class Neo4jFriendsOfFriendsFinder implements FriendsOfFriendsFinder {
         this.graphDb = graphDb;
     }
 
-    public Long countFriendsOfFriends(Long userId) {
+    @SuppressWarnings("deprecation")
+	public Long countFriendsOfFriends(Long userId) {
         Node nodeById = graphDb.getNodeById(userId);
 
         StopWatch stopWatch = new StopWatch();
@@ -48,7 +49,8 @@ public class Neo4jFriendsOfFriendsFinder implements FriendsOfFriendsFinder {
         return result;
     }
 
-    public Long countFriendsOfFriendsDepth3(Long userId) {
+    @SuppressWarnings("deprecation")
+	public Long countFriendsOfFriendsDepth3(Long userId) {
         Node nodeById = graphDb.getNodeById(userId);
 
         StopWatch stopWatch = new StopWatch();
@@ -72,7 +74,8 @@ public class Neo4jFriendsOfFriendsFinder implements FriendsOfFriendsFinder {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        TraversalDescription traversalDescription = Traversal.description().relationships(Constants.IS_FRIEND_OF, Direction.OUTGOING).evaluator(Evaluators.atDepth(4)).uniqueness(Uniqueness.NODE_GLOBAL);
+        @SuppressWarnings("deprecation")
+		TraversalDescription traversalDescription = Traversal.description().relationships(Constants.IS_FRIEND_OF, Direction.OUTGOING).evaluator(Evaluators.atDepth(4)).uniqueness(Uniqueness.NODE_GLOBAL);
         Iterable<Node> nodes = traversalDescription.traverse(nodeById).nodes();
         Long result = 0L;
         for (Node n : nodes) {
@@ -90,7 +93,8 @@ public class Neo4jFriendsOfFriendsFinder implements FriendsOfFriendsFinder {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        TraversalDescription traversalDescription = Traversal.description().relationships(Constants.IS_FRIEND_OF, Direction.OUTGOING).evaluator(Evaluators.atDepth(5)).uniqueness(Uniqueness.NODE_GLOBAL);
+        @SuppressWarnings("deprecation")
+		TraversalDescription traversalDescription = Traversal.description().relationships(Constants.IS_FRIEND_OF, Direction.OUTGOING).evaluator(Evaluators.atDepth(5)).uniqueness(Uniqueness.NODE_GLOBAL);
         Iterable<Node> nodes = traversalDescription.traverse(nodeById).nodes();
         Long result = 0L;
         for (Node n : nodes) {
@@ -103,7 +107,8 @@ public class Neo4jFriendsOfFriendsFinder implements FriendsOfFriendsFinder {
 
     }
 
-    public boolean areConnectedViaFriendsUpToLevel4(Long user1, Long user2) {
+    @SuppressWarnings("deprecation")
+	public boolean areConnectedViaFriendsUpToLevel4(Long user1, Long user2) {
         return GraphAlgoFactory.shortestPath((RelationshipExpander)StandardExpander.DEFAULT.add(Constants.IS_FRIEND_OF, Direction.OUTGOING), 4).findAllPaths(graphDb.getNodeById(user1), graphDb.getNodeById(user2)).iterator().hasNext();
     }
 }
