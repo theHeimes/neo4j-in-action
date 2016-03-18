@@ -27,7 +27,8 @@ public class Neo4jDataGenerator implements DataGenerator {
         this.graphdb = graphdb;
     }
 
-    public void generateUsers(int count, int friendsPerUser) {
+    @SuppressWarnings({ "deprecation", "resource" })
+	public void generateUsers(int count, int friendsPerUser) {
         Transaction tx = graphdb.beginTx();
         try {
             for (int i = 0; i < count; i++) {
