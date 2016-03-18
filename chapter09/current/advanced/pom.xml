@@ -103,8 +103,8 @@
     </dependencies>
 
     <build>
+    <pluginManagement>
         <plugins>
-
             <!-- Advanced mapping uses AspectJ for build-time aspect weaving.
                  It is thus necessary to hook the AspectJ Maven plugin into the build process
                  as per the config below  -->
@@ -149,6 +149,7 @@
                 </configuration>
             </plugin>
         </plugins>
+    </pluginManagement>
     </build>
 
     <repositories>
