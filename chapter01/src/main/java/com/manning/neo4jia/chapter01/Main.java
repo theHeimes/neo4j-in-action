@@ -23,7 +23,7 @@ import java.sql.SQLException;
  */
 public class Main {
 	private static Logger logger = LoggerFactory.getLogger(Main.class);
-	public static final int COUNT = 1000;
+	public static final int COUNT = 10000;
 	public static final int FRIENDS_PER_USER = 50;
 	public static final int CACHE_WARMING_HITS = 10;
 	public static final String NEO4J_STORE_DIR = "/tmp/neo4jia_chapter01";
