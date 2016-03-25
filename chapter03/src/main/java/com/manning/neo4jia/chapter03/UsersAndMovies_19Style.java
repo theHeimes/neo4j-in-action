@@ -22,7 +22,7 @@ public class UsersAndMovies_19Style {
         this.graphDb = graphDb;
     }
 
-    public void reset() {
+	public void reset() {
         Transaction tx = graphDb.beginTx();
         try {
             GlobalGraphOperations ggo = GlobalGraphOperations.at(graphDb);
@@ -38,7 +38,7 @@ public class UsersAndMovies_19Style {
             throw e;              // will automatically fail the transaction. Further
             // methods will omit this
         } finally {
-            tx.finish();
+            tx.close();
         }
     }
 
@@ -62,7 +62,7 @@ public class UsersAndMovies_19Style {
             logger.info("created user:" + user1.getId());
             tx.success();
         } finally {
-            tx.finish();
+            tx.close();
         }
     }
 
@@ -75,7 +75,7 @@ public class UsersAndMovies_19Style {
             logger.info("created user:" + user3.getId());
             tx.success();
         } finally {
-            tx.finish();
+            tx.close();
         }
     }
 
@@ -87,7 +87,7 @@ public class UsersAndMovies_19Style {
             user3.setProperty("name", "Jack Jeffries");
             tx.success();
         } finally {
-            tx.finish();
+            tx.close();
         }
 
     }
@@ -100,7 +100,7 @@ public class UsersAndMovies_19Style {
             user3.setProperty("cars_owned", new String[]{"BMW", "Audi"});
             tx.success();
         } finally {
-            tx.finish();
+            tx.close();
         }
 
     }
@@ -117,7 +117,7 @@ public class UsersAndMovies_19Style {
             movie3.setProperty("name", "Heat");
             tx.success();
         } finally {
-            tx.finish();
+            tx.close();
         }
     }
 
@@ -135,7 +135,7 @@ public class UsersAndMovies_19Style {
 
             tx.success();
         } finally {
-            tx.finish();
+            tx.close();
         }
 
     }
@@ -147,7 +147,7 @@ public class UsersAndMovies_19Style {
             user1.createRelationshipTo(user3, MyRelationshipTypes.IS_FRIEND_OF);
             tx.success();
         } finally {
-            tx.finish();
+            tx.close();
         }
 
     }
@@ -170,7 +170,7 @@ public class UsersAndMovies_19Style {
 
             tx.success();
         } finally {
-            tx.finish();
+            tx.close();
         }
 
     }
