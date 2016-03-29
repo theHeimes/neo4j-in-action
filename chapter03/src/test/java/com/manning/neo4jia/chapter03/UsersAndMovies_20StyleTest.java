@@ -1,5 +1,6 @@
 package com.manning.neo4jia.chapter03;
 
+import com.manning.neo4jia.chapter03.relationshiptype.MyLabels;
 import com.manning.neo4jia.chapter03.relationshiptype.MyRelationshipTypes;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.BeforeClass;
@@ -121,6 +122,15 @@ public class UsersAndMovies_20StyleTest {
             assertEquals(3, IteratorUtil.count(movies));
             tx.success();
         }
+    }
+    @Test
+    public void testUserLabels() {
+    	usersAndMovies.addLabelToUsers();
+    	try (Transaction tx = graphDb.beginTx()) {
+    		ResourceIterable<Node> users = GlobalGraphOperations.at(graphDb).getAllNodesWithLabel(MyLabels.USERS);
+    		assertEquals(3, IteratorUtil.count(users));
+    		tx.success();
+    	}
     }
 
     @Test

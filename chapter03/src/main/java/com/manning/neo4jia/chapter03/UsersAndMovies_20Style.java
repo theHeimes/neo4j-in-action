@@ -1,5 +1,6 @@
 package com.manning.neo4jia.chapter03;
 
+import com.manning.neo4jia.chapter03.relationshiptype.MyLabels;
 import com.manning.neo4jia.chapter03.relationshiptype.MyRelationshipTypes;
 import org.neo4j.graphdb.*;
 import org.neo4j.tooling.GlobalGraphOperations;
@@ -168,6 +169,15 @@ public class UsersAndMovies_20Style {
             tx.success();
         }
 
+    }
+    public void addLabelToUsers() {
+    	try (Transaction tx = graphDb.beginTx()) {
+    		user1.addLabel(MyLabels.USERS);
+    		user2.addLabel(MyLabels.USERS);
+    		user3.addLabel(MyLabels.USERS);
+    		
+    		tx.success();
+    	}
     }
 
 }
